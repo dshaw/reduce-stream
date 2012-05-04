@@ -1,0 +1,30 @@
+{
+  "name": "reduce-stream",
+  "description": "In your streams, reducing your data.",
+  "version": "0.0.1",
+  "keywords": [
+    "stream",
+    "reduce",
+    "mapreduce"
+  ],
+  "author": "Daniel D. Shaw <dshaw@dshaw.com> (http://dshaw.com)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dshaw/reduce-stream.git"
+  },
+  "bugs": {
+    "url": "http://github.com/dshaw/reduce-stream/issues"
+  },
+  "main": "./reduce-stream.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "~1.0.3"
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
