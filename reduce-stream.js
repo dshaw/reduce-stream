@@ -78,11 +78,12 @@ ReduceStream.prototype.write = function (chunk) {
 };
 
 ReduceStream.prototype.flush = function () {
-    var data = this.flushing(this.accumulator)
+    var data = this.flushing(this.accumulator, this.counter)
     if (typeof data !== 'string' && !(data instanceof Buffer)) {
         console.warn("Flushing data not a String or Buffer.")
     }
     this.emit('data', data)
+    this.counter = 0
     return true
 }
 
