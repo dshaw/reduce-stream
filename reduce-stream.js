@@ -46,6 +46,7 @@ function ReduceStream(options, reduce, initialValue) {
 
   this.options = options
   this.accumulated = options.accumulated
+  this.flushing = options.flushing
   if (!options.debug) DEBUG = noop
 
   this.reduce = reduce
@@ -77,11 +78,16 @@ ReduceStream.prototype.write = function (chunk) {
 };
 
 ReduceStream.prototype.flush = function () {
-  this.emit('data', this.accumulator)
-  return true;
+    var data = this.flushing(this.accumulator)
+    if (typeof data !== 'string' && !(data instanceof Buffer)) {
+        console.warn("Flushing data not a String or Buffer.")
+    }
+    this.emit('data', data)
+    return true
 }
 
 ReduceStream.prototype.end = function () {
+  this.flush()
   this.emit('end')
 }
 
